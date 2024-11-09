@@ -7,93 +7,40 @@
 }
 
 body {
-    background-color: #dcffc8;
+    background-color: #e9eeff;
 }
 
 #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0.5rem;
-    background-color: #e9eeff;
-
-    font-family: Montserrat, sans-serif;
-
-    min-width: fit-content;
-    max-width: 1200px;
-    height: clamp(60px, 10vh, 80px);
-    margin: 20px auto;
-    border-radius: 8px;
-
-    background-image: radial-gradient(
-            rgba(255, 255, 255, 0.2) 2px,
-            transparent 1px
-    );
-    color: #554e4d;
-    background-position: 50% 50%;
-    background-size: 1.3rem 1.3rem;
-    overflow: hidden;
-}
-
-#navbar .left, #navbar .center, #navbar .right {
-    display: flex;
-    align-items: center;
-    width: inherit;
-    height: inherit;
-}
-
-#navbar .left h1 {
-    margin-right: 1rem;
-    font-size: 1.5rem;
-    background-color: transparent;
-}
-#navbar .left img {
-    width: 100px;
-}
-#navbar .left span {
-    font-size: 2.2rem;
-}
-
-#navbar .center {
-    flex: 1;
-    justify-content: center;
-    background-color: transparent;
-}
-
-#navbar .center a {
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
-    color: inherit;
-    text-transform: uppercase;
-}
-#navbar .center a:hover {
-    color: #ddd;
-}
-
-#navbar .right input[type="text"] {
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin-right: 1rem;
-    border: 2px black;
-}
-
-#navbar .right button {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #555;
-    width: fit-content;
-    height: 30px;
-    color: #fff;
-    cursor: pointer;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
 }
 
-#navbar .right span {
+#logo {
+    position: relative;
+    width: 12rem;
+    left: 1rem;
+    top: 1rem;
+}
+
+#navbar-wrap {
+    display: inline-flex;
+    position: relative;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(18, 123, 62);
+    width: 45rem;
+    height: 5rem;
+    min-width: fit-content;
+    padding: 1rem;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#search-bar {
     display: inline-flex;
     justify-content: center;
     width: fit-content;
@@ -102,13 +49,29 @@ body {
     align-items: center;
 }
 
-#navbar .right .search-button {
-    width: fit-content;
-    height: fit-content;
-    padding: 0.1rem;
-    margin-left: -0.8rem;
+#search-bar input[type="text"] {
+    padding: 0.5rem;
+    border-radius: 15px;
+    margin-right: 0.2rem;
+    border: 2px solid black;
+
 }
 
-#navbar .right button:hover {
+#search-bar button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    width: 1rem;
+    height: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+#search-bar button:hover {
     background-color: #777;
 }
