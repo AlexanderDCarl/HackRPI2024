@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --background-color: #e9eeff;
+    --border-color: #323250;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +12,8 @@
 }
 
 body {
-    background-color: #e9eeff;
+    background-color: var(--background-color);
+    font-family: Montserrat, sans-serif;
 }
 
 #navbar {
@@ -31,11 +37,10 @@ body {
     position: relative;
     border-bottom-left-radius: 20px;
     background-color: rgb(18, 123, 62);
-    width: 45rem;
+    width: 75%;
     height: 5rem;
     min-width: fit-content;
     padding: 1rem;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
 }
@@ -53,8 +58,9 @@ body {
     padding: 0.5rem;
     border-radius: 15px;
     margin-right: 0.2rem;
-    border: 2px solid black;
-
+    border: 2px solid var(--border-color);
+    width: 20rem;
+    font-family: Montserrat, sans-serif;
 }
 
 #search-bar button {
@@ -64,14 +70,45 @@ body {
 
     padding: 1rem;
     border: none;
-    border-radius: 5px;
-    background-color: #555;
+    border-radius: 15px;
+    background-color: transparent;
     width: 1rem;
     height: 1rem;
     color: #fff;
     cursor: pointer;
 }
 
+#search-button {
+    margin-left: -2.25rem;
+}
+
+#shopping-cart {
+    background-color: var(--background-color) !important;
+    margin-left: 0.5rem;
+    border: 2px solid var(--border-color) !important;
+}
+
+#search-bar img {
+    height: 1rem;
+    background-color: transparent;
+}
+
 #search-bar button:hover {
-    background-color: #777;
+    background-color: #7779;
+}
+
+
+#navbar-wrap .center {
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 20rem;
+}
+#navbar-wrap .center a {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--background-color);
+    text-decoration: none;
+}
+#navbar-wrap .center a:hover {
+    text-decoration: underline;
 }
