@@ -4,9 +4,111 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            padding: 16px;
+            justify-items: center;
+        }
 
+        .product-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-details {
+            padding: 16px;
+        }
+
+        .product-details strong {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-details p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        #pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .pagination-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination-btn.disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.disabled:hover {
+            background-color: #ddd;
+        }
+
+        #pagination-container {
+            margin-bottom: 40px;
+        }
+    </style>
 </head>
 <body>
+
+    <div id="results"></div>
+
+    <div id="pagination-container">
+        <button id="prevPage" class="pagination-btn">
+            <i class="fa fa-chevron-left"></i> <!-- Font Awesome Left Arrow -->
+        </button>
+        <button id="nextPage" class="pagination-btn">
+            <i class="fa fa-chevron-right"></i> <!-- Font Awesome Right Arrow -->
+        </button>
+    </div>
 
     <script src="../resources/js/api.js"></script>
 </body>

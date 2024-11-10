@@ -1,8 +1,8 @@
 <?php
 
-function get_search($search, $platform)
+function get_search($search, $platform, $pageNumber)
 {
-    $url = "https://data.unwrangle.com/api/getter/?platform=$platform&search=$search&country_code=us&page=1&api_key=ec69b1867be5be538320790d2d30cb1a91e06e52";
+    $url = "https://data.unwrangle.com/api/getter/?platform=$platform&search=$search&country_code=us&page=$pageNumber&api_key=31a597b52a51b1c654403a9ca5a7d6ce71e996df";
     $curl = curl_init($url);
 
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -11,14 +11,14 @@ function get_search($search, $platform)
     return $curl;
 }
 
-function fetch_multiple_searches($search)
+function fetch_multiple_searches($search, $pageNumber)
 {
     $mh = curl_multi_init();
 
-    $amazonCurl = get_search($search, "amazon_search");
-    $walmartCurl = get_search($search, "walmart_search");
-    $targetCurl = get_search($search, "target_search");
-    $costcoCurl = get_search($search, "costco_search");
+    $amazonCurl = get_search($search, "amazon_search", $pageNumber);
+    $walmartCurl = get_search($search, "walmart_search", $pageNumber);
+    $targetCurl = get_search($search, "target_search", $pageNumber);
+    $costcoCurl = get_search($search, "costco_search", $pageNumber);
 
     curl_multi_add_handle($mh, $amazonCurl);
     curl_multi_add_handle($mh, $walmartCurl);
@@ -43,18 +43,48 @@ function fetch_multiple_searches($search)
 
     curl_multi_close($mh);
 
-    return [
-        'amazon' => json_decode($amazonData, true),
-        'walmart' => json_decode($walmartData, true),
-        'target' => json_decode($targetData, true),
-        'costco' => json_decode($costcoData, true)
-    ];
+    $amazonData = json_decode($amazonData, true);
+    $walmartData = json_decode($walmartData, true);
+    $targetData = json_decode($targetData, true);
+    $costcoData = json_decode($costcoData, true);
+
+    $combinedResults = [];
+
+    if (isset($amazonData['results'])) {
+        foreach ($amazonData['results'] as $item) {
+            $combinedResults[] = array_merge($item, ['platform' => 'amazon']);
+        }
+    }
+
+    if (isset($walmartData['results'])) {
+        foreach ($walmartData['results'] as $item) {
+            $combinedResults[] = array_merge($item, ['platform' => 'walmart']);
+        }
+    }
+
+    if (isset($targetData['results'])) {
+        foreach ($targetData['results'] as $item) {
+            $combinedResults[] = array_merge($item, ['platform' => 'target']);
+        }
+    }
+
+    if (isset($costcoData['results'])) {
+        foreach ($costcoData['results'] as $item) {
+            $combinedResults[] = array_merge($item, ['platform' => 'costco']);
+        }
+    }
+
+    return $combinedResults;
 }
 
-if (isset($_GET['action'])) {
+if (isset($_GET['action']) && isset($_GET['pageNumber'])) {
     $search = $_GET['action'];
+    $pageNumber = $_GET['pageNumber'];
 
-    $combinedResults = fetch_multiple_searches($search);
+    $search = htmlspecialchars($search);
+    $pageNumber = htmlspecialchars($pageNumber);
+
+    $combinedResults = fetch_multiple_searches($search, $pageNumber);
 
     echo json_encode($combinedResults);
 } else {
