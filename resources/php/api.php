@@ -2,6 +2,7 @@
 
 function get_search($search, $platform, $pageNumber)
 {
+    // these are useless api keys so idk take em if u want
     $url = "https://data.unwrangle.com/api/getter/?platform=$platform&search=$search&country_code=us&page=$pageNumber&api_key=b04ebc4496cb02fe0d586570b793ad9dae75a9b4";
     $curl = curl_init($url);
 
