@@ -106,6 +106,7 @@
             display: flex;
             min-height: 100vh;
             margin: 0;
+            padding: 0;
         }
 
         #sidebar {
@@ -209,7 +210,7 @@
 </head>
 <body>
     <div id="navbar">
-        <img id="logo" src="../resources/images/logo.svg" alt="Logo">
+        <img id="logo" src="../resources/images/logo.svg" onclick="window.location.href = '../index.html';" alt="Logo">
 
         <div id="navbar-wrap">
                     <span id="search-bar">
@@ -218,10 +219,11 @@
                             <img src="../resources/images/Search.svg" alt="Search Icon">
                         </button>
 
-                        <button id="shopping-cart">
-                            <img src="../resources/images/Cart.svg" alt="Cart">
-                            <label>Go to Cart</label>
+                        <button id="shopping-cart" onclick="window.location.href = '../resources/php/cart.php';">
+                        <img src="../resources/images/Cart.svg" alt="Cart">
+                        <label>Go to Cart</label>
                         </button>
+
                     </span>
 
             <div class="center">

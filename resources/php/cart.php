@@ -47,16 +47,16 @@ $conn->close();
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            padding: 20px;
+            padding: 0;
         }
 
         .cart-container {
             max-width: 900px;
+            padding: 260px 30px;
             margin: 0 auto;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
         }
 
         h2 {
@@ -75,11 +75,17 @@ $conn->close();
         }
 
         .cart-item img {
+            width: 30px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        #pic {
             width: 100px;
             height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 20px;
+            margin-right: 15px;
         }
 
         .cart-item .details {
@@ -106,6 +112,7 @@ $conn->close();
         .remove-btn {
             padding: 8px 12px;
             background-color: #f44336;
+            margin-left: 10px;
             color: white;
             border: none;
             border-radius: 5px;
@@ -148,27 +155,60 @@ $conn->close();
             color: #777;
             margin-top: 40px;
         }
-
-        .checkout-btn {
-            display: inline-block;
-            padding: 15px 25px;
-            background-color: #4caf50;
-            color: white;
-            font-size: 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            text-align: center;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .checkout-btn:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
+<div id="navbar">
+    <img id="logo" src="../images/logo.svg" onclick="window.location.href = '../../index.html';" alt="Logo">
+
+    <div id="navbar-wrap">
+                <span id="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <button class="search-button" onclick="" aria-label="Search">
+                        <img src="../images/Search.svg" alt="Search Icon">
+                    </button>
+
+                    <button id="shopping-cart" onclick="window.location.href = './cart.php';">
+                        <img src="../images/Cart.svg" alt="Cart">
+                        <label>Go to Cart</label>
+                    </button>
+                    <div id="dropdown-menu">
+                <div id="dropdown-grid">
+                    <div class="cell" onclick="querySearchBar('produce')">
+                        <img src="../images/produce-category.png" alt="Produce">
+                        <p>Produce</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('school supplies')">
+                        <img src="../images/school-category.png" alt="School Supplies">
+                        <p>School Supplies</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('beverages')">
+                        <img src="../images/drinks-category.png" alt="Beverages">
+                        <p>Beverages</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('household&essentials')">
+                        <img src="../images/household-category.png" alt="Household Essentials">
+                        <p>Household Essentials</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('meat')">
+                        <img src="../images/meat-category.png" alt="Meat">
+                        <p>Meat</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('cleaning&supplies')">
+                        <img src="../images/cleaning-category.png" alt="Cleaning Supplies">
+                        <p>Cleaning Supplies</p>
+                    </div>
+                </div>
+            </div>
+                </span>
+
+            <div class="widgets">
+            <a href="../../index.html">About</a>
+            <a href="#about">Contact</a>
+            <a href="./login.php">Login</a>
+        </div>
+    </div>
+</div>
 
 <div class="cart-container">
     <h2>Your Shopping Cart</h2>
@@ -180,7 +220,7 @@ $conn->close();
     <?php else: ?>
         <?php foreach ($cartItems as $item): ?>
             <div class="cart-item" id="cart-item-<?= $item['shopping_id']; ?>">
-                <img src="<?= $item['image_url']; ?>" alt="<?= $item['name']; ?>">
+                <img src="<?= $item['image_url']; ?>" id="pic" alt="<?= $item['name']; ?>">
                 <div class="details">
                     <h4><?= $item['name']; ?></h4>
                     <p>Store: <?= $item['store']; ?></p>
@@ -189,8 +229,8 @@ $conn->close();
                 <div class="price">
                     $<?= number_format($item['price'], 2); ?>
                 </div>
-                <button class="remove-btn" data-item-id="<?= $item['shopping_id']; ?>">Remove</button>
-                <button class="open-btn" onclick="window.open('<?= $item['URL']; ?>', '_blank')">Open in New Tab</button>
+                <button class="remove-btn" data-item-id="<?= $item['shopping_id']; ?>"><img src="../images/icons8-trash.svg" width="12" height="auto"></button>
+                <button class="open-btn" onclick="window.open('<?= $item['URL']; ?>', '_blank')"><img src="../images/external-link-svgrepo-com.svg" width="12" height="auto"></button>
             </div>
         <?php endforeach; ?>
 
