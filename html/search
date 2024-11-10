@@ -257,6 +257,7 @@
                 <a href="../index.html">About</a>
                 <a href="#about">Contact</a>
                 <a href="../resources/php/login.php">Login</a>
+                <a href="../resources/php/logout.php">Logout</a>
             </div>
         </div>
     </div>
