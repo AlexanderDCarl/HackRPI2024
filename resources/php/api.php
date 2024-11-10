@@ -2,7 +2,7 @@
 
 function get_search($search, $platform, $pageNumber)
 {
-    $url = "https://data.unwrangle.com/api/getter/?platform=$platform&search=$search&country_code=us&page=$pageNumber&api_key=31a597b52a51b1c654403a9ca5a7d6ce71e996df";
+    $url = "https://data.unwrangle.com/api/getter/?platform=$platform&search=$search&country_code=us&page=$pageNumber&api_key=b04ebc4496cb02fe0d586570b793ad9dae75a9b4";
     $curl = curl_init($url);
 
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -15,7 +15,6 @@ function fetch_multiple_searches($search, $pageNumber)
 {
     $mh = curl_multi_init();
 
-    // Initialize cURL handles for each platform
     $amazonCurl = get_search($search, "amazon_search", $pageNumber);
     $walmartCurl = get_search($search, "walmart_search", $pageNumber);
     $targetCurl = get_search($search, "target_search", $pageNumber);

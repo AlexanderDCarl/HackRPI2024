@@ -4,22 +4,46 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="../resources/images/Logo-simple.svg">
+
     <style>
         #results {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, .5fr));
             gap: 16px;
             padding: 16px;
             justify-items: center;
         }
 
-        .product-item img {
+        .product-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
             width: 100%;
-            height: auto;
-            object-fit: cover;
+        }
+
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item img {
+            height: 150px;
+            width: auto;
+            object-fit: contain;
             border-bottom: 1px solid #ddd;
         }
 
+        .product-details {
+            padding: 16px;
+        }
 
         .product-details strong {
             display: block;
@@ -33,6 +57,50 @@
             color: #555;
         }
 
+        #pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .pagination-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination-btn.disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.disabled:hover {
+            background-color: #ddd;
+        }
+
+        #pagination-container {
+            margin-bottom: 40px;
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -68,16 +136,23 @@
         }
 
         #main-content {
-            margin-top: 100px;
             margin-left: 260px;
             padding: 20px;
             flex-grow: 1;
         }
 
         #results {
+            margin-top: 150px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
+        }
+
+        .product-item {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .product-item img {
@@ -86,13 +161,18 @@
             border-radius: 8px;
         }
 
+        .product-item:hover {
+            background-color: #e2e2e2;
+            cursor: pointer;
+        }
+
         #pagination {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
         }
 
-        #navButton {
+        .navButton {
             padding: 10px 20px;
             background-color: #333;
             color: white;
@@ -100,13 +180,28 @@
             cursor: pointer;
         }
 
-        #navButton:disabled {
+        .navButton:disabled {
             background-color: #ccc;
             cursor: not-allowed;
         }
 
         #innerSidebar{
             margin-top: 150px;
+        }
+
+        .store-toggle {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #efefef;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .store-toggle.active {
+            background-color: #007bff;
+            color: white;
         }
 
     </style>
@@ -143,11 +238,19 @@
             <div class="sidebar-section">
                 <h3>Sort By</h3>
                 <select id="sortDropdown">
+                    <option value="Relevance">Relevance</option>
                     <option value="priceLowToHigh">Price: Low to High</option>
                     <option value="priceHighToLow">Price: High to Low</option>
                     <option value="ratingLowToHigh">Rating: Low to High</option>
                     <option value="ratingHighToLow">Rating: High to Low</option>
                 </select>
+            </div>
+            <div class="sidebar-section">
+                <h3>Filter Stores</h3>
+                <button class="store-toggle" data-store="Amazon">Amazon</button>
+                <button class="store-toggle" data-store="Walmart">Walmart</button>
+                <button class="store-toggle" data-store="Costco">Costco</button>
+                <button class="store-toggle" data-store="Target">Target</button>
             </div>
             <div class="sidebar-section">
                 <h3>Filters</h3>
@@ -164,8 +267,8 @@
     <div id="main-content">
         <div id="results"></div>
         <div id="pagination">
-            <button id="prevPage navButton">Prev</button>
-            <button id="nextPage navButton">Next</button>
+            <button id="prevPage" class="navButton">Prev</button>
+            <button id="nextPage" class="navButton">Next</button>
         </div>
     </div>
 
