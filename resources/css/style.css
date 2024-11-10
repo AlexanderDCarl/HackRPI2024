@@ -134,9 +134,10 @@ body {
 }
 #slides {
     display: grid;
-    width: 90%;
+    width: 80vw;
     min-width: 80rem;
-    height: 40rem;
+    height: 45vh;
+    min-height: 40rem;
     overflow: hidden;
     align-items: center;
 }
@@ -146,6 +147,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    translate: 0 -30%;
     transition: opacity 0.3s ease-out;
 }
 #slides .active {
@@ -180,4 +182,12 @@ body {
 
 #info {
     display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    grid-template-rows: auto auto; /* 2 rows */
+    padding-top: 5rem;
+}
+
+.info-card {
+    display: inline-flex;
+    flex-direction: column;
 }
