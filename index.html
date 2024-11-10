@@ -24,6 +24,35 @@
                         <img src="./resources/images/Cart.svg" alt="Cart">
                         <label>Go to Cart</label>
                     </button>
+
+                    <div id="dropdown-menu">
+                <div id="dropdown-grid">
+                    <div class="cell" onclick="querySearchBar('produce')">
+                        <img src="./resources/images/produce-category.png" alt="Produce">
+                        <p>Produce</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('school supplies')">
+                        <img src="./resources/images/school-category.png" alt="School Supplies">
+                        <p>School Supplies</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('beverages')">
+                        <img src="./resources/images/drinks-category.png" alt="Beverages">
+                        <p>Beverages</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('household&essentials')">
+                        <img src="./resources/images/household-category.png" alt="Household Essentials">
+                        <p>Household Essentials</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('meat')">
+                        <img src="./resources/images/meat-category.png" alt="Meat">
+                        <p>Meat</p>
+                    </div>
+                    <div class="cell" onclick="querySearchBar('cleaning&supplies')">
+                        <img src="./resources/images/cleaning-category.png" alt="Cleaning Supplies">
+                        <p>Cleaning Supplies</p>
+                    </div>
+                </div>
+            </div>
                 </span>
 
                 <div class="widgets">
@@ -43,7 +72,7 @@
                 <div id="slide-overlay">
                     <h1>Thankful for Savings!</h1>
                     <p>Easily browse catalogs of local stores to get the best deals and save big on your Thanksgiving feast</p>
-                    <button onclick="window.location.href=`./html/search?q=thanksgiving`">
+                    <button onclick="querySearchBar('thanksgiving')">
                         <img src="./resources/images/Catalogs.svg" alt="Search Now!">
                     </button>
                 </div>

@@ -17,3 +17,10 @@ window.addEventListener('scroll', () => {
         card.style.boxShadow = `#111 1rem ${offset}rem 15px `;
     });
 });
+
+window.querySearchBar = (str) => window.location.href = `./html/search?q=${str}`;
+
+$(document).ready(() => {
+    $('#search-input').on('focus', () => $('#dropdown-menu').fadeIn(200));
+    $('#search-input').on('blur', () => $('#dropdown-menu').fadeOut(400));
+});
