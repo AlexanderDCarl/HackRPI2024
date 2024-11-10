@@ -12,8 +12,7 @@ setInterval(showNextSlide, 5000);
 window.addEventListener('scroll', () => {
     document.getElementById('info').querySelectorAll('*').forEach((card) => {
         const divRect = card.getBoundingClientRect();
-        let offset = 4 - (divRect.top/100);
-        offset = offset < -1 ? -1 : offset > 1 ? 1 : offset;
+        let offset = Math.atan(4 - (divRect.top/100));
         card.style.boxShadow = `#111 1rem ${offset}rem 15px `;
     });
 });

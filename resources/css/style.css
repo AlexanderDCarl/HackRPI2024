@@ -213,7 +213,7 @@ body {
 }
 
 #dropdown-menu {
-    display: block;
+    display: none;
     position: absolute;
     z-index: 3;
     width: 50rem;
