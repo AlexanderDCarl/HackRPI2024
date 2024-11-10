@@ -51,15 +51,25 @@
 
             <script src="./resources/js/index.js"></script>
         </div>
-    <script>
-        $(document).ready(() => {
-            $('.search-button').on('click', function() {
-                const searchTerm = $('#search-input').val();
-                if (searchTerm.trim() !== "") {
-                    window.location.href=`./html/search?q=${searchTerm}`
-                }
+        <div id="info">
+            <div class="info-card">
+                <h1>Time is Money</h1>
+                <p>Simplify your outings </p>
+            </div>
+            <div class="info-card">
+                <h1>Money is Money</h1>
+                <p>Save more, drive less! Find the lowest prices across all your favorite stores with a simple search.</p>
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+                $('.search-button').on('click', function() {
+                    const searchTerm = $('#search-input').val();
+                    if (searchTerm.trim() !== "") {
+                        window.location.href=`./html/search?q=${searchTerm}`
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     </body>
 </html>

@@ -134,13 +134,11 @@ body {
 }
 #slides {
     display: grid;
-    width: 80rem;
-    min-width: 50rem;
+    width: 90%;
+    min-width: 80rem;
     height: 40rem;
     overflow: hidden;
     align-items: center;
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
 }
 #slides .slide {
     grid-area: 1 / 1;
@@ -178,4 +176,8 @@ body {
     width: 10rem;
     border:none;
     cursor: pointer;
+}
+
+#info {
+    display: grid;
 }
