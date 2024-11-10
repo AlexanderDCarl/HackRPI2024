@@ -2,10 +2,18 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 
-function showNextSlide() {
+const showNextSlide = () => {
     slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % totalSlides;
     slides[currentSlide].classList.add('active');
 }
-
 setInterval(showNextSlide, 5000);
+
+window.addEventListener('scroll', () => {
+    document.getElementById('info').querySelectorAll('*').forEach((card) => {
+        const divRect = card.getBoundingClientRect();
+        let offset = 4 - (divRect.top/100);
+        offset = offset < -1 ? -1 : offset > 1 ? 1 : offset;
+        card.style.boxShadow = `#111 1rem ${offset}rem 15px `;
+    });
+});
