@@ -20,6 +20,8 @@ body {
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
+    z-index: 2;
+    position: fixed;
     height: fit-content;
     flex-direction: row;
     align-items: flex-start;
@@ -27,7 +29,8 @@ body {
 }
 
 #logo {
-    position: relative;
+    position: fixed;
+    z-index: 2;
     width: 12rem;
     left: 1rem;
     top: 1rem;
@@ -35,7 +38,9 @@ body {
 
 #navbar-wrap {
     display: inline-flex;
-    position: relative;
+    right: 0;
+    top: 0;
+    position: fixed;
     border-bottom-left-radius: 20px;
     background-color: rgb(18, 123, 62);
     width: 75%;
