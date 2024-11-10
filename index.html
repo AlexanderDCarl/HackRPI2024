@@ -16,7 +16,7 @@
             <div id="navbar-wrap">
                 <span id="search-bar">
                     <input type="text" id="search-input" placeholder="Search products...">
-                    <button class="search-button" aria-label="Search">
+                    <button class="search-button" onclick="" aria-label="Search">
                         <img src="./resources/images/Search.svg" alt="Search Icon">
                     </button>
 
@@ -33,11 +33,26 @@
                 </div>
             </div>
         </div>
-        <div id="slider-preset">
 
+        <div id="slider-container">
+            <div id="slides">
+                <img class="slide active" src="./resources/images/pie.jpg" alt="uh oh!">
+                <img class="slide" src="./resources/images/turkey.jpg" alt="uh oh!">
+                <img class="slide" src="./resources/images/pumpkin.jpg" alt="uh oh!">
+
+                <div id="slide-overlay">
+                    <h1>Thankful for Savings!</h1>
+                    <p>Easily browse catalogs of local stores to get the best deals and save big on your Thanksgiving feast</p>
+                    <button onclick="window.location.href=`./html/search?q=thanksgiving`">
+                        <img src="./resources/images/Catalogs.svg" alt="Search Now!">
+                    </button>
+                </div>
+            </div>
+
+            <script src="./resources/js/index.js"></script>
         </div>
     <script>
-        $(document).ready(function () {
+        $(document).ready(() => {
             $('.search-button').on('click', function() {
                 const searchTerm = $('#search-input').val();
                 if (searchTerm.trim() !== "") {

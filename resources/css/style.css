@@ -20,6 +20,7 @@ body {
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
+    height: fit-content;
     flex-direction: row;
     align-items: flex-start;
     gap: 3rem;
@@ -50,7 +51,7 @@ body {
     justify-content: center;
     width: fit-content;
     margin: 0.5rem;
-    height: 20px;
+    height: 2rem;
     align-items: center;
 }
 #search-bar input[type="text"] {
@@ -121,7 +122,60 @@ body {
     text-decoration: underline;
 }
 
-#slider-preset {
+
+#slider-container {
+    display: inline-flex;
+    position: relative;
+    margin-top: 5rem;
     width: 100%;
     height: fit-content;
+    justify-content: center;
+    border-radius: 10px;
+}
+#slides {
+    display: grid;
+    width: 80rem;
+    min-width: 50rem;
+    height: 40rem;
+    overflow: hidden;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+}
+#slides .slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-out;
+}
+#slides .active {
+    opacity: 1;
+}
+
+#slide-overlay {
+    position: absolute;
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25rem;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 1rem;
+    background-color: var(--background-color);
+}
+
+#slide-overlay h1 {
+    font-size: 4rem;
+    font-family: "Times New Roman", sans-serif;
+}
+#slide-overlay p {
+    font-size: 1.5rem;
+}
+#slide-overlay button {
+    margin-top: 1.25rem;
+    width: 10rem;
+    border:none;
+    cursor: pointer;
 }
