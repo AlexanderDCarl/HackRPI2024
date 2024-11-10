@@ -59,7 +59,8 @@ body {
     border-radius: 15px;
     margin-right: 0.2rem;
     border: 2px solid var(--border-color);
-    width: 20rem;
+    width: 40vw;
+    min-width: 20rem;
     font-family: Montserrat, sans-serif;
 }
 
@@ -79,18 +80,22 @@ body {
 }
 
 #search-button {
-    margin-left: -2.25rem;
+    margin-left: -2.5rem;
 }
 
 #shopping-cart {
     background-color: var(--background-color) !important;
     margin-left: 0.5rem;
     border: 2px solid var(--border-color) !important;
+    width: fit-content !important;
+    color: black !important;
+    text-transform: full-size-kana;
 }
 
 #search-bar img {
     height: 1rem;
     background-color: transparent;
+    padding-right: 0.5rem;
 }
 
 #search-bar button:hover {
