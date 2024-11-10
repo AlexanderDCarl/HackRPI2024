@@ -282,15 +282,6 @@
                 <button class="store-toggle" data-store="Costco">Costco</button>
                 <button class="store-toggle" data-store="Target">Target</button>
             </div>
-            <div class="sidebar-section">
-                <h3>Filters</h3>
-                <label for="priceRange">Price Range:</label>
-                <input type="range" id="priceRange" min="0" max="1000" step="10">
-                <p>Price: $<span id="priceValue">0</span></p>
-            </div>
-            <div class="sidebar-section">
-                <button id="clearFilters">Clear Filters</button>
-            </div>
         </div>
     </div>
 
