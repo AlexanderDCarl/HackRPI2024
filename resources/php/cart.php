@@ -203,10 +203,11 @@ $conn->close();
                 </span>
 
             <div class="widgets">
-            <a href="../../index.html">About</a>
-            <a href="#about">Contact</a>
-            <a href="./login.php">Login</a>
-        </div>
+                <a href="../../index.html">About</a>
+                <a href="mailto:peterl8@rpi.edu,carla2@rpi.edu,loaizs@rpi.edu" target="_blank">Contact</a>
+                <a href="./login.php">Login</a>
+                <a href="./logout.php">Logout</a>
+            </div>
     </div>
 </div>
 
