@@ -15,6 +15,7 @@ function fetch_multiple_searches($search, $pageNumber)
 {
     $mh = curl_multi_init();
 
+    // Initialize cURL handles for each platform
     $amazonCurl = get_search($search, "amazon_search", $pageNumber);
     $walmartCurl = get_search($search, "walmart_search", $pageNumber);
     $targetCurl = get_search($search, "target_search", $pageNumber);
@@ -40,7 +41,6 @@ function fetch_multiple_searches($search, $pageNumber)
     curl_multi_remove_handle($mh, $walmartCurl);
     curl_multi_remove_handle($mh, $targetCurl);
     curl_multi_remove_handle($mh, $costcoCurl);
-
     curl_multi_close($mh);
 
     $amazonData = json_decode($amazonData, true);
@@ -48,31 +48,12 @@ function fetch_multiple_searches($search, $pageNumber)
     $targetData = json_decode($targetData, true);
     $costcoData = json_decode($costcoData, true);
 
-    $combinedResults = [];
-
-    if (isset($amazonData['results'])) {
-        foreach ($amazonData['results'] as $item) {
-            $combinedResults[] = array_merge($item, ['platform' => 'amazon']);
-        }
-    }
-
-    if (isset($walmartData['results'])) {
-        foreach ($walmartData['results'] as $item) {
-            $combinedResults[] = array_merge($item, ['platform' => 'walmart']);
-        }
-    }
-
-    if (isset($targetData['results'])) {
-        foreach ($targetData['results'] as $item) {
-            $combinedResults[] = array_merge($item, ['platform' => 'target']);
-        }
-    }
-
-    if (isset($costcoData['results'])) {
-        foreach ($costcoData['results'] as $item) {
-            $combinedResults[] = array_merge($item, ['platform' => 'costco']);
-        }
-    }
+    $combinedResults = [
+        'Amazon' => isset($amazonData['results']) ? $amazonData['results'] : [],
+        'Walmart' => isset($walmartData['results']) ? $walmartData['results'] : [],
+        'Target' => isset($targetData['results']) ? $targetData['results'] : [],
+        'Costco' => isset($costcoData['results']) ? $costcoData['results'] : []
+    ];
 
     return $combinedResults;
 }

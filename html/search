@@ -13,21 +13,6 @@
             justify-items: center;
         }
 
-        .product-item {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-
-        .product-item:hover {
-            transform: scale(1.05);
-        }
-
         .product-item img {
             width: 100%;
             height: auto;
@@ -35,9 +20,6 @@
             border-bottom: 1px solid #ddd;
         }
 
-        .product-details {
-            padding: 16px;
-        }
 
         .product-details strong {
             display: block;
@@ -51,63 +33,140 @@
             color: #555;
         }
 
-        #pagination-container {
+        body {
+            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            gap: 20px;
-            z-index: 100;
+            min-height: 100vh;
+            margin: 0;
         }
 
-        .pagination-btn {
-            background-color: #007bff;
+        #sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar h2 {
+            margin-top: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+
+        #sidebar select, #sidebar input, #sidebar button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        #main-content {
+            margin-top: 100px;
+            margin-left: 260px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        #results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        #pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #navButton {
+            padding: 10px 20px;
+            background-color: #333;
             color: white;
             border: none;
-            border-radius: 50%;
-            padding: 10px;
-            font-size: 24px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .pagination-btn:hover {
-            background-color: #0056b3;
-        }
-
-        .pagination-btn.disabled {
-            background-color: #ddd;
+        #navButton:disabled {
+            background-color: #ccc;
             cursor: not-allowed;
         }
 
-        .pagination-btn.disabled:hover {
-            background-color: #ddd;
+        #innerSidebar{
+            margin-top: 150px;
         }
 
-        #pagination-container {
-            margin-bottom: 40px;
-        }
     </style>
+    <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
+    <div id="navbar">
+        <img id="logo" src="../resources/images/logo.svg" alt="Logo">
 
-    <div id="results"></div>
+        <div id="navbar-wrap">
+                    <span id="search-bar">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <button class="search-button" onclick="" aria-label="Search">
+                            <img src="../resources/images/Search.svg" alt="Search Icon">
+                        </button>
 
-    <div id="pagination-container">
-        <button id="prevPage" class="pagination-btn">
-            <i class="fa fa-chevron-left"></i> <!-- Font Awesome Left Arrow -->
-        </button>
-        <button id="nextPage" class="pagination-btn">
-            <i class="fa fa-chevron-right"></i> <!-- Font Awesome Right Arrow -->
-        </button>
+                        <button id="shopping-cart">
+                            <img src="../resources/images/Cart.svg" alt="Cart">
+                            <label>Go to Cart</label>
+                        </button>
+                    </span>
+
+            <div class="center">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div id="innerSidebar">
+            <h2>Filter & Sort</h2>
+            <div class="sidebar-section">
+                <h3>Sort By</h3>
+                <select id="sortDropdown">
+                    <option value="priceLowToHigh">Price: Low to High</option>
+                    <option value="priceHighToLow">Price: High to Low</option>
+                    <option value="ratingLowToHigh">Rating: Low to High</option>
+                    <option value="ratingHighToLow">Rating: High to Low</option>
+                </select>
+            </div>
+            <div class="sidebar-section">
+                <h3>Filters</h3>
+                <label for="priceRange">Price Range:</label>
+                <input type="range" id="priceRange" min="0" max="1000" step="10">
+                <p>Price: $<span id="priceValue">0</span></p>
+            </div>
+            <div class="sidebar-section">
+                <button id="clearFilters">Clear Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div id="results"></div>
+        <div id="pagination">
+            <button id="prevPage navButton">Prev</button>
+            <button id="nextPage navButton">Next</button>
+        </div>
     </div>
 
     <script src="../resources/js/api.js"></script>
