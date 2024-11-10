@@ -124,6 +124,7 @@ body {
     color: var(--background-color);
     text-decoration: none;
     letter-spacing: 0;
+    cursor: pointer;
     transition: text-decoration 0.3s ease-in-out,
                 letter-spacing 0.3s ease-in-out;
 }
