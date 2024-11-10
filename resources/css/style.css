@@ -53,7 +53,6 @@ body {
     height: 20px;
     align-items: center;
 }
-
 #search-bar input[type="text"] {
     padding: 0.5rem;
     border-radius: 15px;
@@ -63,7 +62,6 @@ body {
     min-width: 20rem;
     font-family: Montserrat, sans-serif;
 }
-
 #search-bar button {
     display: inline-flex;
     align-items: center;
@@ -75,11 +73,14 @@ body {
     background-color: transparent;
     width: 1rem;
     height: 1rem;
-    color: #fff;
     cursor: pointer;
-}
 
-#search-button {
+    transition: background-color 0.3s ease-in-out;
+}
+#search-bar button:hover {
+    background-color: #AAA !important;
+}
+#search-bar .search-button {
     margin-left: -2.5rem;
 }
 
@@ -88,20 +89,22 @@ body {
     margin-left: 0.5rem;
     border: 2px solid var(--border-color) !important;
     width: fit-content !important;
-    color: black !important;
-    text-transform: full-size-kana;
+    white-space: nowrap;
+}
+#shopping-cart label {
+    font-size: 0;
+    color: var(--border-color);
+    transition: font-size 0.3s ease-in-out !important;
+}
+#shopping-cart:hover label {
+    margin-left: 0.5rem;
+    font-size: 1rem;
 }
 
 #search-bar img {
     height: 1rem;
     background-color: transparent;
-    padding-right: 0.5rem;
 }
-
-#search-bar button:hover {
-    background-color: #7779;
-}
-
 
 #navbar-wrap .center {
     display: inline-flex;
@@ -116,4 +119,9 @@ body {
 }
 #navbar-wrap .center a:hover {
     text-decoration: underline;
+}
+
+#slider-preset {
+    width: 100%;
+    height: fit-content;
 }
